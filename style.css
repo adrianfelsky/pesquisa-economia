@@ -1,0 +1,338 @@
+:root {
+    --navy: #1e2a4a;
+    --navy-mid: #2c3e6b;
+    --navy-light: #4a5f8a;
+    --gold: #c9a45a;
+    --gold-light: #e8c97e;
+    --cream: #faf8f4;
+    --cream-dark: #f2ede3;
+    --cream-border: #e8dfc8;
+    --muted: #7a8099;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    font-family: 'Lato', 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.header {
+    background: var(--navy);
+    padding: 20px 32px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.header-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.header-sub {
+    font-size: 12px;
+    color: #8a9abf;
+    margin-top: 2px;
+}
+
+.badge {
+    background: rgba(201, 164, 90, 0.15);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 6px 14px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Layout Geral */
+.dashboard-body {
+    padding: 32px;
+}
+
+.controls-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.field-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* KPIs */
+.kpi {
+    background: var(--white);
+    border: 1px solid var(--cream-border);
+    border-top: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.kpi-val {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.kpi-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* Cartão do Gráfico */
+.chart-card {
+    background: var(--white);
+    border: 1px solid var(--cream-border);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+}
+
+.chart-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.chart-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+}
+
+.chart-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+/* ==========================================
+   ANIMAÇÃO DO GRÁFICO (RECHARTS HACK)
+   ========================================== */
+
+/* 1. Prepara todos os caminhos do gráfico para aceitarem animação suave */
+.recharts-bar-rectangle path,
+.recharts-pie-sector path {
+  transition: opacity 0.3s ease !important;
+}
+
+/* 2. Se o mouse estiver em cima de qualquer item (is-hovering), escurece TODOS */
+.is-hovering .recharts-bar-rectangle path,
+.is-hovering .recharts-pie-sector path {
+  opacity: 0.3 !important;
+}
+
+/* 3. Salva da escuridão APENAS o item exato que o mouse está em cima */
+.is-hovering.idx-0 .recharts-bar-rectangle:nth-child(1) path,
+.is-hovering.idx-0 .recharts-pie-sector:nth-child(1) path { opacity: 1 !important; }
+
+.is-hovering.idx-1 .recharts-bar-rectangle:nth-child(2) path,
+.is-hovering.idx-1 .recharts-pie-sector:nth-child(2) path { opacity: 1 !important; }
+
+.is-hovering.idx-2 .recharts-bar-rectangle:nth-child(3) path,
+.is-hovering.idx-2 .recharts-pie-sector:nth-child(3) path { opacity: 1 !important; }
+
+.is-hovering.idx-3 .recharts-bar-rectangle:nth-child(4) path,
+.is-hovering.idx-3 .recharts-pie-sector:nth-child(4) path { opacity: 1 !important; }
+
+.is-hovering.idx-4 .recharts-bar-rectangle:nth-child(5) path,
+.is-hovering.idx-4 .recharts-pie-sector:nth-child(5) path { opacity: 1 !important; }
+
+.is-hovering.idx-5 .recharts-bar-rectangle:nth-child(6) path,
+.is-hovering.idx-5 .recharts-pie-sector:nth-child(6) path { opacity: 1 !important; }
+
+.is-hovering.idx-6 .recharts-bar-rectangle:nth-child(7) path,
+.is-hovering.idx-6 .recharts-pie-sector:nth-child(7) path { opacity: 1 !important; }
+
+.gold-line {
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+    margin: 0 0 20px;
+    border-radius: 1px;
+}
+
+/* Insight e Legenda */
+.insight {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+}
+
+.insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.insight-text {
+    font-size: 13px;
+    color: var(--navy-mid);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--cream-border);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    transition: opacity 0.3s;
+}
+
+/* Botões (Pills) e Selects */
+.q-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.q-pills-row .btn-pill {
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+    
+    /* 🚀 O COMBO MÁGICO DO CSS */
+    white-space: nowrap;       /* 1. Impede o texto de pular para a linha de baixo */
+    overflow: hidden;          /* 2. Esconde tudo que vazar do botão */
+    text-overflow: ellipsis;   /* 3. Coloca os "..." automaticamente no que vazou */
+}
+
+.btn-pill {
+    font-family: 'Lato', sans-serif;
+    font-size: 12.5px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.18s;
+    border: 1px solid var(--cream-border);
+    background: transparent;
+    color: var(--navy-light);
+}
+
+.btn-pill.active {
+    font-weight: 700;
+    border-color: var(--gold);
+    background: var(--navy);
+    color: var(--gold);
+}
+
+.styled-select {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    background: var(--cream);
+    color: var(--navy);
+    border: 1px solid var(--cream-border);
+    border-radius: 8px;
+    padding: 8px 32px 8px 12px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9a45a' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+}
+
+/* Tooltip */
+
+.custom-tooltip {
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12.5px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 6px 24px rgba(30, 42, 74, 0.35);
+    min-width: 150px;
+}
+
+/* ==========================================
+   MODO IMPRESSÃO / EXPORTAÇÃO
+   ========================================== */
+@media print {
+
+    /* Esconde os menus e botões na hora de imprimir */
+    .controls-row,
+    .q-pills-row,
+    .styled-select,
+    .btn-pill {
+        display: none !important;
+    }
+
+    /* Deixa o fundo branco para economizar tinta/ficar limpo no PDF */
+    body,
+    html,
+    .dashboard-body {
+        background: #ffffff !important;
+    }
+
+    /* Tira as bordas do cartão do gráfico */
+    .chart-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    /* Força a impressão em paisagem (opcional) */
+    @page {
+        size: landscape;
+    }
+}
