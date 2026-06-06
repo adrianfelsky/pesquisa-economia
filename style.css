@@ -74,7 +74,7 @@ html {
 
 /* Layout Geral */
 .dashboard-body {
-    padding: 32px;
+    padding: 32px 32px 18px 32px;
 }
 
 .controls-row {
@@ -291,7 +291,26 @@ html {
     background-position: calc(100% - 10px) center;
 }
 
-/* Tooltip */
+/* Footer e Tooltip */
+.footer {
+    margin-top: 0px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer span {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin:auto;
+}
+
+/* .footer-author {
+    color: var(--gold) !important;
+    font-weight: 700;
+} */
 
 .custom-tooltip {
     background: var(--navy);

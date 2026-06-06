@@ -238,7 +238,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* criar botoes melhores */}
         <div className="q-pills-row">
           {data.questions.map((q, i) => (
             <button key={q} onClick={() => setQuestion(q)} className={`btn-pill ${question === q ? "active" : ""}`}>
@@ -247,6 +246,12 @@ function Dashboard() {
           ))}
         </div>
       </div>
+
+      <div className="footer">
+          {/* <span>Economia Digital e Comportamento · UFSC Blumenau · 2026</span>
+          <span className="footer-author">Adrian Gazzani Felsky dos Anjos</span> */}
+          <span>Criado por Adrian Gazzani Felsky dos Anjos</span>
+        </div>
     </div>
   );
 }
